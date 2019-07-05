@@ -40,14 +40,6 @@ $wpdb->collate = 'utf8mb4_unicode_ci';
 $wpdb->save_queries = false;
 
 /**
- * recheck_timeout (float)
- * The amount of time to wait before trying again to ping mysql server.
- *
- * Default: 0.1 (Seconds)
- */
-$wpdb->recheck_timeout = 0.1;
-
-/**
  * persistent (bool)
  * This determines whether to use mysql_connect or mysql_pconnect. The effects
  * of this setting may vary and should be carefully tested.
@@ -93,28 +85,24 @@ $wpdb->cache_group = 'ludicrousdb';
  * This adds the DB defined in wp-config.php as a read/write server for
  * the 'global' dataset. (Every table is in 'global' by default.)
  */
-$wpdb->add_database(
-	array(
-		'host'     => DB_HOST,     // If port is other than 3306, use host:port.
-		'user'     => DB_USER,
-		'password' => DB_PASSWORD,
-		'name'     => DB_NAME,
-	)
-);
+$wpdb->add_database( array(
+	'host'     => DB_HOST,     // If port is other than 3306, use host:port.
+	'user'     => DB_USER,
+	'password' => DB_PASSWORD,
+	'name'     => DB_NAME,
+) );
 
 /**
  * This adds the same server again, only this time it is configured as a slave.
  * The last three parameters are set to the defaults but are shown for clarity.
  */
-$wpdb->add_database(
-	array(
-		'host'     => DB_HOST,     // If port is other than 3306, use host:port.
-		'user'     => DB_USER,
-		'password' => DB_PASSWORD,
-		'name'     => DB_NAME,
-		'write'    => 0,
-		'read'     => 1,
-		'dataset'  => 'global',
-		'timeout'  => 0.2,
-	)
-);
+$wpdb->add_database( array(
+	'host'     => DB_HOST,     // If port is other than 3306, use host:port.
+	'user'     => DB_USER,
+	'password' => DB_PASSWORD,
+	'name'     => DB_NAME,
+	'write'    => 0,
+	'read'     => 1,
+	'dataset'  => 'global',
+	'timeout'  => 0.2,
+) );

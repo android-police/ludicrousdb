@@ -475,7 +475,7 @@ class LudicrousDB extends wpdb {
 			$query_match = substr( $query, 0, 1000 );
 
 			foreach ( $this->srtm as $key => $value ) {
-				if ( false !== stripos( $query_match, $key ) ) {
+                if ( false !== stripos( $query_match, (string)$key ) ) {
 					$use_master = true;
 					break;
 				}
